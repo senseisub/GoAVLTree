@@ -6,6 +6,6 @@ Inorder - prints elements in tree inorder
 </p>
 
 <p>
-    How to initialize an AVLTree :
-        tree := AVLTree{}
+    How to initialize an AVLTree : <br>
+        <t> tree := AVLTree{}
 </p>
