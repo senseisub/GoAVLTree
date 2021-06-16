@@ -42,7 +42,7 @@ func max(a, b int) int{
 	return b;
 }
 
-func (tree *AVLTree) insert(curr *TreeNode, x int) {
+func (tree *AVLTree) Insert(curr *TreeNode, x int) {
 	if curr == nil {
 		fmt.Println("insert <nul>");
 		tree.root = &TreeNode{data : x}
@@ -59,7 +59,7 @@ func (tree *AVLTree) insert(curr *TreeNode, x int) {
 				}
 			}
 		} else {
-			tree.insert(curr.left, x)
+			tree.Insert(curr.left, x)
 		}
 	} else if curr.data < x {
 		if curr.right == nil {
@@ -72,7 +72,7 @@ func (tree *AVLTree) insert(curr *TreeNode, x int) {
 				}
 			}
 		} else {
-			tree.insert(curr.right, x)
+			tree.Insert(curr.right, x)
 		}
 	} else {
 		return
@@ -82,24 +82,24 @@ func (tree *AVLTree) insert(curr *TreeNode, x int) {
 }
 
 //prints the values in the AVLTree in order
-func (tree *AVLTree) inorder(node *TreeNode){
+func (tree *AVLTree) Inorder(node *TreeNode){
 	if node == nil {
 		return;
 	}
-	tree.inorder(node.left);
+	tree.Inorder(node.left);
 	fmt.Println(node.data); // TODO: getID works but not what we want
-	tree.inorder(node.right);
+	tree.Inorder(node.right);
 }
 
-func (tree *AVLTree) exists(curr *TreeNode, x int) bool {
+func (tree *AVLTree) Exists(curr *TreeNode, x int) bool {
 	if curr == nil {
 		fmt.Println("<nul>");
 		return false
 	}
 	if curr.data > x{
-		return tree.exists(curr.left, x)
+		return tree.Exists(curr.left, x)
 	} else if curr.data < x {
-		return tree.exists(curr.right, x)
+		return tree.Exists(curr.right, x)
 	} 
 	return true;
 }
@@ -152,7 +152,7 @@ func main() {
 
 		if strings.Compare("q", text) != 0 {
 			i, _ := strconv.Atoi(text)
-			tree.insert(tree.root, i)
+			tree.Insert(tree.root, i)
 		} else {
 			break
 		}
@@ -167,10 +167,10 @@ func main() {
 
 		if strings.Compare("q", text) != 0 {
 			i, _ := strconv.Atoi(text)
-			fmt.Println(tree.exists(tree.root, i));
+			fmt.Println(tree.Exists(tree.root, i));
 		} else {
 			break
 		}
 	}
-	tree.inorder(tree.root)
+	tree.Inorder(tree.root)
 }
